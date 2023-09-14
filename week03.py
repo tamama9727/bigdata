@@ -3,14 +3,14 @@ import numpy as np
 import tkinter as tk  # Built in GUI
 from tkinter import messagebox
 
-def press_enter_key(ev):
-    click_button()
-    messagebox.showinfo('cordinate value' , f"({ev.x}, {ev.y})")
+# def press_enter_key(ev):
+#     click_button()
+#     messagebox.showinfo('cordinate value' , f"({ev.x}, {ev.y})")
 
 def create_2d_array(row, col):
     return np.random.randint(1,101, size=(row, col))
 
-def click_button():
+def click_button(*args):
     try:
         r,c = map(int, en_row_column.get().split())
         matrix = create_2d_array(r,c)
@@ -28,8 +28,8 @@ en_row_column = tk.Entry()
 btn_click = tk.Button(text="click me!", command=click_button)
 
 #enter key bi
-en_row_column.bind("<Return>",press_enter_key)
-
+# en_row_column.bind("<Return>",press_enter_key)
+en_row_column.bind("<Return>",click_button)
 lbl_result.pack()
 en_row_column.pack(fill='x')
 btn_click.pack(fill='x')
